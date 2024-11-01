@@ -5,7 +5,7 @@ use deno_core::{serde_v8, v8, ModuleSpecifier};
 mod loader;
 mod runtime;
 
-#[tokio::main]
+#[tokio::main(flavor = "current_thread")]
 async fn main() {
     let module_url = "blake3://foo".parse::<ModuleSpecifier>().unwrap();
     let mut runtime = Runtime::new(module_url.clone(), 1).unwrap();
